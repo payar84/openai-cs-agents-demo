@@ -22,6 +22,8 @@ class AirlineAgentContext(BaseModel):
     destination: str | None = None
     # Loyalty tier (e.g. "Silver", "Gold", "Platinum") - used for personalized service
     loyalty_tier: str | None = None
+    # Preferred contact method for follow-up communications (e.g. "email", "sms")
+    preferred_contact: str | None = None
 
 
 class AirlineAgentChatContext(AgentContext[dict]):

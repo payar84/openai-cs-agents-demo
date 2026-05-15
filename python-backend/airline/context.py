@@ -24,6 +24,8 @@ class AirlineAgentContext(BaseModel):
     loyalty_tier: str | None = None
     # Preferred contact method for follow-up communications (e.g. "email", "sms")
     preferred_contact: str | None = None
+    # Number of times the customer has contacted support in this session
+    contact_count: int = 0
 
 
 class AirlineAgentChatContext(AgentContext[dict]):
@@ -55,6 +57,8 @@ def public_context(ctx: AirlineAgentContext) -> dict:
         "baggage_claim_id",
         "compensation_case_id",
         "scenario",
+        # contact_count is internal bookkeeping; no need to show it in the UI
+        "contact_count",
     }
     for key in list(data.keys()):
         if key in hidden_keys:
